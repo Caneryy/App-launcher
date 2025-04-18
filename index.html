@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>App Launcher</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 2rem; }
+    .loading { font-size: 1.2rem; color: #555; }
+  </style>
+</head>
+<body>
+  <h2>Opening App...</h2>
+  <p class="loading">If nothing happens, make sure the app is installed.</p>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const link = params.get('link');
+    if (link) {
+      setTimeout(() => {
+        window.location.href = link;
+      }, 100); // küçük bir gecikme daha stabil
+    } else {
+      document.querySelector('.loading').innerText = 'Invalid or missing link parameter.';
+    }
+  </script>
+</body>
+</html>
